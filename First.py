@@ -2,7 +2,7 @@ import scrapy
 
 
 class BrickSetSpider(scrapy.Spider):
-    name = 'newSpider'
+    name = 'newSpider2'
     start_urls = ['http://brickset.com/sets/year-2016']
 
     def parse(self, response):
