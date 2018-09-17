@@ -1,4 +1,4 @@
-import PyMySQL
+import pymysql
 
 
 class Database:
