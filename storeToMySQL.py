@@ -8,15 +8,9 @@ class Database:
     password = 'D!i9m9o)N'
     db = 'spiderDb'
 
-  spiderDbConnection = pymysql.connect  (host="spiderdb.cnh5suc8nb8k.us-east-1.rds.amazonaws.com",
-  user="admin",
-  passwd="D!i9m9o)N",
-  database="spiderDb")
+
+spiderDbConnection = pymysql.connect(host="spiderdb.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="D!i9m9o)N",  database="spiderDb")
 spiderDbCursor = spiderDbConnection.cursor()
-
-
-
-
 
 
 query = """
