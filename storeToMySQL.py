@@ -61,4 +61,4 @@ if __name__ == "__main__":
     people = db.query(select_query)
 
     for person in people:
-        print "Found %s " % person['name']
+        print ("Found %s " % person['name'])
