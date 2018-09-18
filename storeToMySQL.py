@@ -15,7 +15,7 @@ spiderDbCursor = spiderDbConnection.cursor()
 #query_create = """CREATE TABLE customers (name VARCHAR(255), age int)"""
 
 
-spiderDbCursor.execute(query_create)
+#spiderDbCursor.execute(query_create)
 
 
 query = """
