@@ -38,7 +38,7 @@ select_query = """
 spiderDbCursor.execute(select_query)
 
 for person in spiderDbCursor:
-        print(person['name'])
+        print(person)
 
 spiderDbCursor.close()
 spiderDbConnection.close()
