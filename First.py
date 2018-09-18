@@ -1,29 +1,25 @@
 import scrapy
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor
 
+class MySpider(CrawlSpider):
+    name = 'redditSpider'
+    allowed_domains = ['reddit.com']
+    start_urls = ['https://www.reddit.com/r/worldnews/']
 
-class BrickSetSpider(scrapy.Spider):
-    name = 'newSpider2'
-    start_urls = ['http://brickset.com/sets/year-2016']
+    rules = (
+        # Extract links matching 'category.php' (but not matching 'subsection.php')
+        # and follow links from them (since no callback means follow=True by default).
+        Rule(LinkExtractor(allow=('category\.php', ), deny=('subsection\.php', ))),
 
-    def parse(self, response):
-        SET_SELECTOR = '.set'
-        for brickset in response.css(SET_SELECTOR):
+        # Extract links matching 'item.php' and parse them with the spider's method parse_item
+        Rule(LinkExtractor(allow=('item\.php', )), callback='parse_item'),
+    )
 
-            NAME_SELECTOR = 'h1 a ::text'
-            PIECES_SELECTOR = './/dl[dt/text() = "Pieces"]/dd/a/text()'
-            MINIFIGS_SELECTOR = './/dl[dt/text() = "Minifigs"]/dd[2]/a/text()'
-            IMAGE_SELECTOR = 'img ::attr(src)'
-            yield {
-                'name': brickset.css(NAME_SELECTOR).extract_first(),
-                'pieces': brickset.xpath(PIECES_SELECTOR).extract_first(),
-                'minifigs': brickset.xpath(MINIFIGS_SELECTOR).extract_first(),
-                'image': brickset.css(IMAGE_SELECTOR).extract_first(),
-            }
-
-        NEXT_PAGE_SELECTOR = '.next a ::attr(href)'
-        next_page = response.css(NEXT_PAGE_SELECTOR).extract_first()
-        if next_page:
-            yield scrapy.Request(
-                response.urljoin(next_page),
-                callback=self.parse
-            )
+    def parse_item(self, response):
+        self.logger.info('Hi, this is an item page! %s', response.url)
+        item = scrapy.Item()
+        item['id'] = response.xpath('//td[@id="item_id"]/text()').re(r'ID: (\d+)')
+        item['name'] = response.xpath('//td[@id="item_name"]/text()').extract()
+        item['description'] = response.xpath('//td[@id="item_description"]/text()').extract()
+        return item
