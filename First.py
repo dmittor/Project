@@ -24,3 +24,4 @@ class MySpider(CrawlSpider):
         item['description'] = response.xpath('//td[@id="item_description"]/text()').extract()
         return item
 
+
