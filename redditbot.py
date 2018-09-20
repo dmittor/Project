@@ -7,4 +7,6 @@ reddit = praw.Reddit(client_id='81r5TPtAXFF5MA',
                      username='grasshopper_api')
 
 
-print(reddit.auth.scopes())
+submission = reddit.submission(url='https://www.reddit.com/r/funny/comments/3g1jfi/buttons/')
+for top_level_comment in submission.comments:
+    print(top_level_comment.body)
