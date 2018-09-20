@@ -6,4 +6,13 @@ reddit = praw.Reddit(client_id='8WsvZGB6mbj7sw',
                      user_agent='testscript by /u/grasshopper_api',
                      username='grasshopper_api')
 
-print(reddit.auth.scopes())
+appended_data = []
+
+subreddit = reddit.subreddit('worldnews')
+
+top_python = subreddit.top(limit=10)
+for submission in top_python:
+    if not submission.stickied:
+        appended_data.append(submission.selftext)
+
+print(appended_data)
