@@ -13,7 +13,7 @@ num_comments_submission_array = []
 permalink_submission_array = []
 score_submission_array = []
 title_submission_array = []
-over18_submission_array = []
+over_18_submission_array = []
 upvote_ratio_submission_array = []
 is_video_submission_array = []
 
@@ -32,7 +32,7 @@ for submission in top_python:
         permalink_submission_array.append(submission.permalink)
         score_submission_array.append(submission.score)
         title_submission_array.append(submission.title)
-        over18_submission_array.append(submission.over18)
+        over_18_submission_array.append(submission.over_18)
         upvote_ratio_submission_array.append(submission.upvote_ratio)
         is_video_submission_array.append(submission.id)
 
@@ -45,6 +45,6 @@ print(num_comments_submission_array)
 print(permalink_submission_array)
 print(score_submission_array)
 print(title_submission_array)
-print(over18_submission_array)
+print(over_18_submission_array)
 print(upvote_ratio_submission_array)
 print(is_video_submission_array)
