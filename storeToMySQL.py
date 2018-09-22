@@ -5,7 +5,7 @@ class Database:
 
     host = 'dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com'
     user = 'admin'
-    password = 'D!i9m9o)N'
+    password = 'K!u1Z(z0'
     db = 'spiderDb'
 
 
