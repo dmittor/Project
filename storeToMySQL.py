@@ -4,7 +4,7 @@ import pymysql
 class Database:
 
 
-    spiderDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbgrasshopper")
+    spiderDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
     spiderDbCursor = spiderDbConnection.cursor()
 
 # query_create = """CREATE TABLE customers (name VARCHAR(255), age int)"""
