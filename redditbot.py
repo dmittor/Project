@@ -11,6 +11,7 @@ id_submission_array = []
 author_submission_array = []
 num_comments_submission_array = []
 permalink_submission_array = []
+url_submission_array = []
 score_submission_array = []
 title_submission_array = []
 over_18_submission_array = []
@@ -22,7 +23,7 @@ subreddit = reddit.subreddit('worldnews')
 
 
 
-top_python = subreddit.top(limit=99)
+top_python = subreddit.top(limit=5)
 for submission in top_python:
     if not submission.stickied:
 
@@ -35,6 +36,7 @@ for submission in top_python:
         over_18_submission_array.append(submission.over_18)
         upvote_ratio_submission_array.append(submission.upvote_ratio)
         is_video_submission_array.append(submission.id)
+        url_submission_array.append(submission.url)
 
 
 
