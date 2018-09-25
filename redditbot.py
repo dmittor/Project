@@ -46,6 +46,13 @@ for submission in top_python:
 redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
 redditDbCursor = redditDbConnection.cursor()
 
+
+query_create = """DROP TABLE redditRworldnews """
+
+
+redditDbCursor.execute(query_create)
+
+
 query_create = """CREATE TABLE redditRworldnews ( intsubmission_id VARCHAR(255),
 submission_author VARCHAR(255),
 submission_num_comments int,
