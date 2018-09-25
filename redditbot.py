@@ -32,7 +32,7 @@ for submission in top_python:
 
         insert_row.append('(' + row_string + ')')
 
-
+print(insert_row)
 redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
 redditDbCursor = redditDbConnection.cursor()
 
@@ -40,7 +40,7 @@ redditDbCursor = redditDbConnection.cursor()
 
 query = """REPLACE INTO redditRworldnews (submission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
         VALUES"""+(','.join(map(str, insert_row)))
-
+print(query)
 
 try:
     redditDbCursor.execute(query)
