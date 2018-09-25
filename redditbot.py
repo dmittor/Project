@@ -24,7 +24,7 @@ subreddit = reddit.subreddit('worldnews')
 
 
 
-top_python = subreddit.top(limit=2)
+top_python = subreddit.top(limit=5)
 for submission in top_python:
     if not submission.stickied:
 
@@ -37,12 +37,12 @@ redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.
 redditDbCursor = redditDbConnection.cursor()
 
 
-query_create = """DROP TABLE redditRworldnews """
+#query_create = """DROP TABLE redditRworldnews """
 
-try:
-    redditDbCursor.execute(query_create)
-except pymysql.InternalError as error:
-    print('Got error {!r}, errno is {}'.format(error, error.args[0]))
+#try:
+    #redditDbCursor.execute(query_create)
+#except pymysql.InternalError as error:
+    #print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
 query_create = """CREATE TABLE redditRworldnews ( submission_id VARCHAR(255) PRIMARY KEY,submission_author VARCHAR(255), submission_num_comments int, submission_permalink VARCHAR(255),submission_score int, submission_title VARCHAR(512),submission_over_18 VARCHAR(255),submission_upvote_ratio float, submission_url VARCHAR(512))"""
 print(query_create)
