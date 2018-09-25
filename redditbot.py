@@ -28,9 +28,9 @@ top_python = subreddit.top(limit=1)
 for submission in top_python:
     if not submission.stickied:
 
-        makeitastring = "'%s','%s',%d,'%s',%d,'%s','%s',%f,'%s'" % (submission.id,submission.author,submission.num_comments,submission.permalink,submission.score,submission.title,submission.over_18,submission.upvote_ratio,submission.url)
-        # print(makeitastring)
-        insert_row.append('(' + makeitastring + ')')
+        row_string = "'%s','%s',%d,'%s',%d,'%s','%s',%f,'%s'" % (submission.id,submission.author,submission.num_comments,submission.permalink,submission.score,submission.title,submission.over_18,submission.upvote_ratio,submission.url)
+
+        insert_row.append('(' + row_string + ')')
 
 print(insert_row)
 redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
@@ -51,7 +51,7 @@ try:
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
-query = """REPLACE INTO redditRworldnews (submission_id PRIMARY KEY, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
+query = """REPLACE INTO redditRworldnews (submission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
         VALUES"""+(','.join(map(str, insert_row)))
 print(query)
 
