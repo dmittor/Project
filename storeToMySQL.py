@@ -4,10 +4,10 @@ import pymysql
 class Database:
 
 
-    spiderDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
-    spiderDbCursor = spiderDbConnection.cursor()
+    redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
+    redditDbCursor = spiderDbConnection.cursor()
 
-    query_create = """CREATE TABLE customers (name VARCHAR(255), age int)"""
+    query_create = """CREATE TABLE redditRworldnews (name VARCHAR(255), age int)"""
 
 
     spiderDbCursor.execute(query_create)

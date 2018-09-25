@@ -16,14 +16,14 @@ score_submission_array = []
 title_submission_array = []
 over_18_submission_array = []
 upvote_ratio_submission_array = []
-is_video_submission_array = []
+
 
 
 subreddit = reddit.subreddit('worldnews')
 
 
 
-top_python = subreddit.top(limit=1)
+top_python = subreddit.top(limit=5)
 for submission in top_python:
     if not submission.stickied:
 
@@ -35,8 +35,49 @@ for submission in top_python:
         title_submission_array.append(submission.title)
         over_18_submission_array.append(submission.over_18)
         upvote_ratio_submission_array.append(submission.upvote_ratio)
-        is_video_submission_array.append(submission.id)
+
         url_submission_array.append(submission.url)
+
+    str1 = ''.join(str(e) for e in list1)
+
+
+
+
+    redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
+    redditDbCursor = redditDbConnection.cursor()
+
+    query_create = """CREATE TABLE redditRworldnews (name VARCHAR(255), age int)"""
+
+
+    redditDbCursor.execute(query_create)
+
+
+    query = """
+        INSERT INTO customers
+        (`name`, `age`)
+        VALUES
+        ('Mike', 21),
+        ('Michael', 21),
+        ('Imran', 21)
+        """
+
+
+    redditDbCursor.execute(query)
+
+    select_query = """
+        SELECT * FROM customers
+        WHERE age = 21
+        """
+
+    redditDbCursor.execute(select_query)
+
+    for person in redditDbCursor:
+        print(person)
+
+    redditDbCursor.close()
+    redditDbConnection.close()
+
+
 
 
 
@@ -50,4 +91,3 @@ print(score_submission_array)
 print(title_submission_array)
 print(over_18_submission_array)
 print(upvote_ratio_submission_array)
-print(is_video_submission_array)
