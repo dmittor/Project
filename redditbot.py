@@ -53,7 +53,7 @@ query_create = """DROP TABLE redditRworldnews """
 redditDbCursor.execute(query_create)
 
 
-query_create = """CREATE TABLE redditRworldnews ( intsubmission_id VARCHAR(255),
+query_create = """CREATE TABLE redditRworldnews ( submission_id VARCHAR(255),
 submission_author VARCHAR(255),
 submission_num_comments int,
 submission_permalink VARCHAR(255),
@@ -61,7 +61,7 @@ submission_score int,
 submission_title VARCHAR(255),
 submission_over_18 VARCHAR(255),
 submission_upvote_ratio float,
-submission_url VARCHAR(255))"""
+submission_url VARCHAR(MAX))"""
 
 
 redditDbCursor.execute(query_create)
@@ -69,9 +69,8 @@ redditDbCursor.execute(query_create)
 
 query = """
         INSERT INTO redditRworldnews
-        (intsubmission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
+        (submission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
         VALUES
-
         """+(','.join(map(str, insert_row)))
 
 
