@@ -24,7 +24,7 @@ subreddit = reddit.subreddit('worldnews')
 
 
 
-top_python = subreddit.top(limit=1)
+top_python = subreddit.top(limit=5)
 for submission in top_python:
     if not submission.stickied:
 
@@ -70,6 +70,7 @@ except pymysql.InternalError as error:
 
 for row in redditDbCursor:
         print(row)
+        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
 redditDbCursor.close()
 redditDbConnection.close()
