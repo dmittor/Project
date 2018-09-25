@@ -44,7 +44,7 @@ try:
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
-query_create = """CREATE TABLE redditRworldnews ( submission_id VARCHAR(255) PRIMARY KEY,submission_author VARCHAR(255), submission_num_comments int, submission_permalink VARCHAR(255),submission_score int, submission_title VARCHAR(512),submission_over_18 VARCHAR(255),submission_upvote_ratio float, submission_url VARCHAR(512))"""
+query_create = """CREATE TABLE redditRworldnews ( submission_id VARCHAR(255) PRIMARY KEY,submission_author VARCHAR(255), submission_num_comments int, submission_permalink VARCHAR(255),submission_score int, submission_title TEXT,submission_over_18 VARCHAR(255),submission_upvote_ratio float, submission_url VARCHAR(512))"""
 print(query_create)
 try:
     redditDbCursor.execute(query_create)
