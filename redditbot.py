@@ -61,7 +61,7 @@ submission_score int,
 submission_title VARCHAR(255),
 submission_over_18 VARCHAR(255),
 submission_upvote_ratio float,
-submission_url VARCHAR(MAX))"""
+submission_url VARCHAR(512))"""
 
 
 redditDbCursor.execute(query_create)
