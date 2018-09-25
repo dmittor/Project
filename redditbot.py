@@ -28,21 +28,21 @@ top_python = subreddit.top(limit=2)
 for submission in top_python:
     if not submission.stickied:
 
-        L.append('1')
-        L.append('2')
-        L.append('3')
-        L.append('4')
-        L.append('5')
-        L.append('6')
-        L.append('7')
-        L.append('8')
-        L.append('9')
+        L.append(submission.id)
+        L.append(submission.author)
+        L.append(submission.num_comments)
+        L.append(submission.permalink)
+        L.append(submission.score)
+        L.append(submission.title)
+        L.append(submission.over_18)
+        L.append(submission.upvote_ratio)
+        L.append(submission.url)
 
         makeitastring = ','.join(map(str, L))
-
+        print(makeitastring)
         insert_row.append('(' + makeitastring + ')')
 
-
+print(insert_row)
 redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
 redditDbCursor = redditDbConnection.cursor()
 
@@ -54,6 +54,7 @@ try:
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
+
 query_create = """CREATE TABLE redditRworldnews ( submission_id VARCHAR(255),
 submission_author VARCHAR(255),
 submission_num_comments int,
@@ -63,7 +64,7 @@ submission_title VARCHAR(255),
 submission_over_18 VARCHAR(255),
 submission_upvote_ratio float,
 submission_url VARCHAR(512))"""
-
+print(query_create)
 
 redditDbCursor.execute(query_create)
 
