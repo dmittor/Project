@@ -28,15 +28,15 @@ top_python = subreddit.top(limit=2)
 for submission in top_python:
     if not submission.stickied:
 
-        L.append(submission.id)
-        L.append(submission.author)
-        L.append(submission.num_comments)
+        L.append('submission.id')
+        L.append('submission.author')
+        L.append('submission.num_comments')
         L.append('submission.permalink')
-        L.append(submission.score)
-        L.append(submission.title)
-        L.append(submission.over_18)
-        L.append(submission.upvote_ratio)
-        L.append(submission.url)
+        L.append('submission.score')
+        L.append('submission.title')
+        L.append('submission.over_18')
+        L.append('submission.upvote_ratio')
+        L.append('submission.url')
 
         makeitastring = ','.join(map(str, L))
         # print(makeitastring)
