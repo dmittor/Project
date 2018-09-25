@@ -21,7 +21,7 @@ for submission in top_python:
 
         insert_row.append('(' + row_string + ')')
 
-redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
+redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper", autocommit=True)
 redditDbCursor = redditDbConnection.cursor()
 
 
