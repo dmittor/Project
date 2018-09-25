@@ -62,10 +62,10 @@ redditDbCursor.execute(query_create)
 
 query = """
         INSERT INTO redditRworldnews
-        (`name`, `age`)
+        (intsubmission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
         VALUES
-        %
-        """%(','.join(map(str, insert_row)))
+
+        """+(','.join(map(str, insert_row)))
 
 
 
