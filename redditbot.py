@@ -7,17 +7,6 @@ reddit = praw.Reddit(client_id='8WsvZGB6mbj7sw',
                      user_agent='testscript by /u/grasshopper_api',
                      username='grasshopper_api')
 
-
-id_submission_array = []
-author_submission_array = []
-num_comments_submission_array = []
-permalink_submission_array = []
-url_submission_array = []
-score_submission_array = []
-title_submission_array = []
-over_18_submission_array = []
-upvote_ratio_submission_array = []
-
 insert_row = []
 
 subreddit = reddit.subreddit('worldnews')
