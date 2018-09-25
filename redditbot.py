@@ -24,7 +24,7 @@ subreddit = reddit.subreddit('worldnews')
 
 
 
-top_python = subreddit.top(limit=5)
+top_python = subreddit.top(limit=2)
 for submission in top_python:
     if not submission.stickied:
 
