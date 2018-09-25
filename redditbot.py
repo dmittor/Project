@@ -64,6 +64,17 @@ except pymysql.InternalError as error:
 
 
 
+query = """INSERT INTO redditRworldnews 
+        (submission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
+        VALUES 
+        ("""+(','.join(map(str, insert_row))) + ')'
+
+
+try:
+    redditDbCursor.execute(query)
+except pymysql.InternalError as error:
+    print('Got error {!r}, errno is {}'.format(error, error.args[0]))
+
 select_query = """
         SELECT * FROM redditRworldnews
         """
