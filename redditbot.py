@@ -28,7 +28,7 @@ top_python = subreddit.top(limit=5)
 for submission in top_python:
     if not submission.stickied:
 
-        row_string = "'%s','%s',%d,'%s',%d,'%s','%s',%f,'%s'" % (submission.id,submission.author,submission.num_comments,submission.permalink,submission.score,submission.title,submission.over_18,submission.upvote_ratio,submission.url)
+        row_string = "'%s','%s',%d,'%s',%d,'%s','%s',%f,'%s'" % (submission.id,submission.author,submission.num_comments,submission.permalink,submission.score,submission.title.replace("'", "\\'"),submission.over_18,submission.upvote_ratio,submission.url)
 
         insert_row.append('(' + row_string + ')')
 
