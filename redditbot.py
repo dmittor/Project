@@ -39,7 +39,8 @@ for submission in top_python:
         L.append(submission.url)
 
         makeitastring = ','.join(map(str, L))
-        insert_row.append("(%)" % (makeitastring))
+
+        insert_row.append('(%)' % (makeitastring))
 
 
 redditDbConnection = pymysql.connect(host="dbgrasshopper.cnh5suc8nb8k.us-east-1.rds.amazonaws.com", user="admin",  passwd="K!u2Z(z0",  database="dbGrasshopper")
