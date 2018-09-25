@@ -39,7 +39,7 @@ for submission in top_python:
         L.append(submission.url)
 
         makeitastring = ','.join(map(str, L))
-        print(makeitastring)
+        # print(makeitastring)
         insert_row.append('(' + makeitastring + ')')
 
 print(insert_row)
