@@ -65,8 +65,11 @@ submission_over_18 VARCHAR(255),
 submission_upvote_ratio float,
 submission_url VARCHAR(512))"""
 print(query_create)
+try:
+    redditDbCursor.execute(query_create)
+except pymysql.InternalError as error:
+    print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
-redditDbCursor.execute(query_create)
 
 
 query = """
@@ -76,14 +79,18 @@ query = """
         """+(','.join(map(str, insert_row)))
 
 
-
-redditDbCursor.execute(query)
+try:
+ redditDbCursor.execute(query)
+except pymysql.InternalError as error:
+    print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
 select_query = """
         SELECT * FROM redditRworldnews
         """
-
-redditDbCursor.execute(select_query)
+try:
+    redditDbCursor.execute(select_query)
+except pymysql.InternalError as error:
+    print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
 for row in redditDbCursor:
         print(row)
