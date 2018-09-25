@@ -40,7 +40,7 @@ redditDbCursor = redditDbConnection.cursor()
 query_create = """DROP TABLE redditRworldnews """
 
 try:
-    #redditDbCursor.execute(query_create)
+    redditDbCursor.execute(query_create)
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
