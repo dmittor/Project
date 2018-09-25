@@ -28,17 +28,7 @@ top_python = subreddit.top(limit=2)
 for submission in top_python:
     if not submission.stickied:
 
-        L.append('submission.id')
-        L.append('submission.author')
-        L.append(submission.num_comments)
-        L.append('submission.permalink')
-        L.append(submission.score)
-        L.append('submission.title')
-        L.append('submission.over_18')
-        L.append(submission.upvote_ratio)
-        L.append('submission.url')
-
-        makeitastring = ','.join(map(str, L))
+        makeitastring = "'%s','%s',%d,'%s',%d,'%s','%s',%.2f,,'%s'" % (submission.id,submission.author,submission.num_comments,submission.permalink,submission.score,submission.title,submission.over_18,submission.url)
         # print(makeitastring)
         insert_row.append('(' + makeitastring + ')')
 
@@ -61,8 +51,6 @@ try:
     redditDbCursor.execute(query_create)
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
-
-
 
 query = """INSERT INTO redditRworldnews (submission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
         VALUES"""+(','.join(map(str, insert_row)))
