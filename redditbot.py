@@ -31,7 +31,7 @@ for submission in top_python:
         L.append(submission.id)
         L.append(submission.author)
         L.append(submission.num_comments)
-        L.append(submission.permalink)
+        L.append('submission.permalink')
         L.append(submission.score)
         L.append(submission.title)
         L.append(submission.over_18)
