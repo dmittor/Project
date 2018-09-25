@@ -51,8 +51,8 @@ query_create = """DROP TABLE redditRworldnews """
 
 try:
     redditDbCursor.execute(query_create)
-except MySQLError as e:
-    print('Got error {!r}, errno is {}'.format(e, e.args[0]))
+except pymysql.InternalError as error:
+    print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
 query_create = """CREATE TABLE redditRworldnews ( submission_id VARCHAR(255),
 submission_author VARCHAR(255),
