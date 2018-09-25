@@ -17,7 +17,7 @@ score_submission_array = []
 title_submission_array = []
 over_18_submission_array = []
 upvote_ratio_submission_array = []
-L = []
+
 insert_row = []
 
 subreddit = reddit.subreddit('worldnews')
@@ -44,15 +44,14 @@ try:
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
-
-query_create = """CREATE TABLE redditRworldnews ( submission_id VARCHAR(255),submission_author VARCHAR(255), submission_num_comments int, submission_permalink VARCHAR(255),submission_score int, submission_title VARCHAR(512),submission_over_18 VARCHAR(255),submission_upvote_ratio float, submission_url VARCHAR(512))"""
+query_create = """CREATE TABLE redditRworldnews ( submission_id VARCHAR(255) PRIMARY KEY,submission_author VARCHAR(255), submission_num_comments int, submission_permalink VARCHAR(255),submission_score int, submission_title VARCHAR(512),submission_over_18 VARCHAR(255),submission_upvote_ratio float, submission_url VARCHAR(512))"""
 print(query_create)
 try:
     redditDbCursor.execute(query_create)
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 
-query = """INSERT INTO redditRworldnews (submission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
+query = """REPLACE INTO redditRworldnews (submission_id, submission_author, submission_num_comments,submission_permalink, submission_score, submission_title, submission_over_18, submission_upvote_ratio, submission_url)
         VALUES"""+(','.join(map(str, insert_row)))
 print(query)
 
@@ -60,7 +59,7 @@ try:
     redditDbCursor.execute(query)
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
-
+print ('-----------------------------------------------------------')
 select_query = """
         SELECT * FROM redditRworldnews
         """
@@ -68,7 +67,7 @@ try:
     redditDbCursor.execute(select_query)
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
-print ('-----------------------------------------------------------')
+
 for row in redditDbCursor:
         print(row)
 
