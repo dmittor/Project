@@ -36,6 +36,7 @@ try:
 except pymysql.InternalError as error:
     print('Got error {!r}, errno is {}'.format(error, error.args[0]))
 print ('-----------------------------------------------------------')
+redditDbCursor.commit()
 select_query = """
         SELECT * FROM redditRworldnews
         """
